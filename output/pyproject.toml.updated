@@ -1,0 +1,25 @@
+[project]
+name = "mock_project"
+version = "0.1.0"
+dependencies = [
+    "django==3.1.7",
+    "urllib3"
+]
+optional-dependencies = { docs = ["sphinx"], dev = ["pytest", "flake8"] }
+
+[tool.poetry]
+name = "mock_project"
+version = "0.1.0"
+description = "A mock project for testing"
+authors = ["Tester <test@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "3.1.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^22.1.0"
+
+[tool.poetry.extras]
+docs = ["sphinx"]
