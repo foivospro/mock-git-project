@@ -16,7 +16,6 @@ authors = ["Tester <test@example.com>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "3.1.7"
-pandas = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
