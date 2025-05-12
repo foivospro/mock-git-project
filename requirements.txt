@@ -1,0 +1,5 @@
+# dummy dependencies for testing
+django==3.1.7
+flake8
+scikit-learn
+pandas
