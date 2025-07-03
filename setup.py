@@ -28,16 +28,52 @@ setup(
         "beautifulsoup4>=4.10.0",
         "typing-extensions>=4.0.0",
         "importlib-metadata>=4.0.0",
+        # Edge cases with different operators and formatting
+        "opencv-python == 4.8.0.74",
+        "Pillow ~= 10.0.0",
+        "scikit_learn >= 1.3.0, < 2.0",
+        "tensorflow-gpu != 2.11.0",
+        "torch >= 2.0.0; python_version >= '3.8'",
+        "torchvision[extra] >= 0.15.0",
+        "protobuf >= 3.20.0, != 4.21.0, != 4.21.1",
+        "grpcio >= 1.48.0; sys_platform == 'linux'",
+        "pywin32 >= 306; sys_platform == 'win32'",
+        "cryptography >= 3.4.8; extra == 'crypto'",
     ],
     extras_require={
         "dev": [
             "black>=22.0.0",
             "flake8>=4.0.0",
             "mypy>=0.950",
+            "pre-commit ~= 3.0",
+            "bandit[toml] >= 1.7.0",
+            "safety != 2.2.0",
         ],
         "test": [
             "pytest-cov>=4.0.0",
             "pytest-mock>=3.7.0",
+            "hypothesis >= 6.0, < 7.0",
+            "factory-boy == 3.3.0",
+            "freezegun ~= 1.2.0",
+        ],
+        "extra": [
+            # Completely unused optional dependency group
+            "redis >= 4.0.0",
+            "celery[redis] >= 5.2.0",
+            "flower >= 1.2.0",
+        ],
+        "ml": [
+            # Machine learning extras with complex requirements
+            "scikit-learn >= 1.3.0",
+            "xgboost >= 1.7.0; python_version >= '3.8'",
+            "lightgbm != 3.3.5",
+            "catboost >= 1.2.0; sys_platform != 'darwin'",
+        ],
+        # Edge case: extra with special characters and numbers
+        "gpu-ml_v2": [
+            "tensorflow-gpu >= 2.12.0",
+            "torch[cuda] >= 2.0.0",
+            "cupy-cuda11x >= 11.0.0",
         ],
     },
     classifiers=[

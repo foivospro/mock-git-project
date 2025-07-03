@@ -1,0 +1,38 @@
+# Development requirements file with edge cases
+
+# Include base requirements
+-r requirements.txt
+
+# Development tools with various operators
+isort == 5.12.0
+coverage[toml] ~= 7.2.0
+tox >= 4.0.0, < 5.0.0
+sphinx != 7.0.0, != 7.0.1
+sphinx-rtd-theme >= 1.2.0
+
+# Edge cases with environment markers
+pyreadline3 >= 3.4.1; sys_platform == 'win32'
+readline >= 6.2.4.1; sys_platform == 'darwin'
+gnureadline >= 8.1.2; sys_platform == 'linux'
+
+# Complex version specifications
+requests-oauthlib >= 1.3.0, != 1.3.1, < 2.0.0
+urllib3 >= 1.26.0, < 2.0.0; python_version < '3.10'
+urllib3 >= 2.0.0; python_version >= '3.10'
+
+# Package extras
+requests[security, socks] >= 2.28.0
+sqlalchemy[asyncio, mypy] >= 2.0.0
+celery[redis, auth] >= 5.3.0
+
+# Commented out dependencies (should be ignored)
+# outdated-package >= 1.0.0
+# another-old-lib == 0.5.0
+
+# URL-based dependencies
+# git+https://github.com/user/repo.git@v1.0.0#egg=custom_package
+# git+ssh://git@github.com/private/repo.git@main#egg=private_lib
+
+# Local file dependencies (unusual in dev requirements)
+# -e /path/to/local/development/package
+# file:///absolute/path/to/package.tar.gz
