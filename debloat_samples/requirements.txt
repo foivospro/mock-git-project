@@ -1,7 +1,0 @@
-# Base dependencies
-requests==2.25.1
-numpy>=1.19.2
-
-# Optional dependencies
-matplotlib
-nonexistent-package>=0.0.1
