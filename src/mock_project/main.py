@@ -2,34 +2,30 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
-import flask
-import django
-import fastapi
-import sqlalchemy
-import redis
-import celery
-import pydantic
 import click
 import rich
 import typer
 import httpx
-import aiohttp
-import pytest
-import beautifulsoup4
-import lxml
-import openpyxl
-import pillow
-import boto3
-import paramiko
-import cryptography
-import jwt
-import passlib
-import bcrypt
+import seaborn as sns
+import flask
+import django
+import fastapi
+
+def fetch_data():
+    response = requests.get("https://httpbin.org/json")
+    return response.json() if response.status_code == 200 else {}
 
 def process_data():
     data = [1, 2, 3, 4, 5]
-    result = sum(data)
+    arr = np.array(data)
+    df = pd.DataFrame({"values": data})
+    
+    result = {
+        "sum": arr.sum(),
+        "mean": arr.mean(),
+        "dataframe_size": len(df)
+    }
+    
     return result
 
 def calculate_average():
@@ -37,15 +33,28 @@ def calculate_average():
     average = sum(numbers) / len(numbers)
     return average
 
-def main():
-    print("Mock project is running!")
-    total = process_data()
+@click.command()
+@click.option('--verbose', is_flag=True, help='Verbose output')
+def main(verbose):
+    if verbose:
+        print("Mock project is running in verbose mode!")
+    else:
+        print("Mock project is running!")
+    
+    api_data = fetch_data()
+    processed = process_data()
     avg = calculate_average()
     
-    print(f"Total: {total}")
-    print(f"Average: {avg}")
+    if verbose:
+        console = rich.console.Console()
+        console.print(f"API Data: {api_data}", style="green")
+        console.print(f"Processed: {processed}", style="blue")
+        console.print(f"Average: {avg}", style="yellow")
+    else:
+        print(f"Processed: {processed}")
+        print(f"Average: {avg}")
     
-    return {"total": total, "average": avg}
+    return {"api": api_data, "processed": processed, "average": avg}
 
 if __name__ == "__main__":
     main()
