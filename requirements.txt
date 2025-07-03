@@ -1,67 +1,34 @@
-# Main dependencies
-requests>=2.25.0
-pandas>=1.3.0
-numpy>=1.21.0
-matplotlib>=3.4.0
-click>=8.0.0
-rich>=12.0.0
-typer>=0.4.0
-httpx>=0.23.0
-seaborn>=0.11.0
-flask>=2.0.0
-django>=4.0.0
-fastapi>=0.68.0
-sqlalchemy>=1.4.0
-pytest>=7.0.0
-beautifulsoup4>=4.10.0
-typing-extensions>=4.0.0
-importlib-metadata>=4.0.0
+# Edge Case Testing File
+# Each line demonstrates a different problematic pattern
 
-# Edge cases with different formatting and operators
-opencv-python == 4.8.0.74
-Pillow ~= 10.0.0
-scikit_learn >= 1.3.0, < 2.0
-tensorflow-gpu != 2.11.0
-torch >= 2.0.0; python_version >= '3.8'
-torchvision[extra] >= 0.15.0
-protobuf >= 3.20.0, != 4.21.0, != 4.21.1
-grpcio >= 1.48.0; sys_platform == 'linux'
-pywin32 >= 306; sys_platform == 'win32'
-cryptography >= 3.4.8; extra == 'crypto'
+# 1. Space-separated multiple packages (should only remove tensorflow)
+tensorflow>=2.12.0 opencv-python>=4.8.0 redis>=4.5.0
 
-# Multiple dependencies on same line (edge case)
-flask-cors>=3.0.0 flask-jwt-extended>=4.0.0
-redis>=4.0.0 celery[redis]>=5.2.0 flower>=1.2.0
-jupyter>=1.0.0 ipython>=8.0.0 notebook>=6.0.0
+# 2. Tab-separated multiple packages (should only remove boto3)
+scikit-learn>=1.3.0	boto3>=1.28.0	celery>=5.3.0
 
-# Git and file dependencies (unusual in requirements.txt)
-# jupyter-lab @ git+https://github.com/jupyterlab/jupyterlab.git
-# custom-package @ file:///path/to/local/package
+# 3. Comma-separated multiple packages (should only remove xgboost)
+xgboost>=1.7.0,pillow>=10.0.0,paramiko>=2.11.0
 
-# Development dependencies
-black>=22.0.0
-flake8>=4.0.0
-mypy>=0.950
-pre-commit ~= 3.0
-bandit[toml] >= 1.7.0
-safety != 2.2.0
+# 4. Semicolon-separated multiple packages (should only remove pytest-cov)
+pytest-cov>=4.0.0;black>=23.0.0;isort>=5.12.0
 
-# Test dependencies
-pytest-cov>=4.0.0
-pytest-mock>=3.7.0
-hypothesis >= 6.0, < 7.0
-factory-boy == 3.3.0
-freezegun ~= 1.2.0
+# 5. Line continuation (should only remove jupyter)
+jupyter>=1.0.0 notebook>=6.5.0 \
+    sphinx>=5.0.0 mkdocs>=1.4.0
 
-# More same-line edge cases
-gunicorn>=20.0.0 uvicorn[standard]>=0.18.0
-aioredis>=2.0.0 aiobotocore>=2.4.0
+# 6. Mixed format with line continuation (should only remove wheel)
+wheel>=0.40.0 setuptools>=68.0.0 \
+    pip-tools>=7.0.0
 
-# ML dependencies with conditions
-xgboost >= 1.7.0; python_version >= '3.8'
-lightgbm != 3.3.5
-catboost >= 1.2.0; sys_platform != 'darwin'
-
-# Inline comments with multiple deps
+# 7. Inline comments with multiple packages (should only remove boto3)
 boto3>=1.26.0 botocore>=1.29.0  # AWS SDK components
-requests-oauthlib>=1.3.0 authlib>=1.2.0  # Auth libraries
+
+# 8. Different spacing patterns (should only remove pandas)
+pandas>=1.3.0    numpy>=1.21.0     matplotlib>=3.4.0
+
+# 9. Mixed operators in same line (should only remove django)
+django>=4.0.0 flask~=2.0.0 fastapi!=0.67.0
+
+# 10. Packages with extras in same line (should only remove celery)
+celery[redis]>=5.2.0 flower>=1.2.0 dramatiq[watch]>=1.13.0
