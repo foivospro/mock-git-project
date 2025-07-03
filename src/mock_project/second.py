@@ -16,3 +16,6 @@ def calculate_average_second():
     numbers = [10, 20, 30, 40, 50]
     average = sum(numbers) / len(numbers)
     return average
+
+def nested_function():
+      import flask
