@@ -23,7 +23,7 @@ setup(
         "scikit_learn >= 1.3.0, < 2.0", "tensorflow-gpu != 2.11.0",
         "torch >= 2.0.0; python_version >= '3.8'", "torchvision[extra] >= 0.15.0",
         "protobuf >= 3.20.0, != 4.21.0, != 4.21.1", "grpcio >= 1.48.0; sys_platform == 'linux'",
-        "pywin32 >= 306; sys_platform == 'win32'", "cryptography >= 3.4.8; extra == 'crypto'",
+        "pywin32 >= 306; sys_platform == 'win32'", "cryptography >= 3.4.8; extra == 'crypto'"
     ],
     extras_require={
         "dev": [
