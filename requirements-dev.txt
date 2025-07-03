@@ -25,6 +25,15 @@ requests[security, socks] >= 2.28.0
 sqlalchemy[asyncio, mypy] >= 2.0.0
 celery[redis, auth] >= 5.3.0
 
+# Multiple dependencies on same line edge cases
+pytest-xdist>=3.0.0 pytest-parallel>=0.1.0 pytest-benchmark>=4.0.0
+coverage>=7.0.0 coverage-badge>=1.1.0 pytest-cov>=4.0.0
+flake8>=6.0.0 flake8-docstrings>=1.7.0 flake8-import-order>=0.18.0
+black>=23.0.0 isort>=5.12.0 autopep8>=2.0.0
+
+# Tab-separated dependencies (another edge case)
+mkdocs>=1.4.0	mkdocs-material>=9.0.0	mkdocs-mermaid2-plugin>=1.0.0
+
 # Commented out dependencies (should be ignored)
 # outdated-package >= 1.0.0
 # another-old-lib == 0.5.0
@@ -36,3 +45,11 @@ celery[redis, auth] >= 5.3.0
 # Local file dependencies (unusual in dev requirements)
 # -e /path/to/local/development/package
 # file:///absolute/path/to/package.tar.gz
+
+# Mixed same-line and multi-line
+wheel>=0.40.0 setuptools>=68.0.0 \
+    pip-tools>=7.0.0
+
+# Same line with different separators
+django-extensions>=3.2.0,django-debug-toolbar>=4.0.0
+fastapi-users[sqlalchemy]>=12.0.0;uvloop>=0.17.0
