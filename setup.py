@@ -26,6 +26,8 @@ setup(
         "sqlalchemy>=1.4.0",
         "pytest>=7.0.0",
         "beautifulsoup4>=4.10.0",
+        "typing-extensions>=4.0.0",
+        "importlib-metadata>=4.0.0",
     ],
     extras_require={
         "dev": [
