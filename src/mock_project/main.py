@@ -11,6 +11,7 @@ import flask
 import django
 import fastapi
 import os
+import httpx
 
 def fetch_data():
     response = requests.get("https://httpbin.org/json")
