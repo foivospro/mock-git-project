@@ -36,6 +36,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import importlib
 import pkgutil
+import sklearn
 
 # More dynamic import edge cases
 def load_module_by_name(module_name):
@@ -105,13 +106,13 @@ def discover_modules():
 # Conditional import with exception handling
 def conditional_import():
     conditions = [True, False, sys.version_info >= (3, 8)]
-    
+
     if conditions[0]:
         from typing_extensions import Protocol as ProtocolType
-    
+
     if any(conditions):
         import_result = __import__("black")
-    
+
     # Import with multiple exception types
     try:
         special_import = importlib.import_module("special_package")
@@ -131,7 +132,7 @@ def namespace_import():
     import types
     fake_module = types.ModuleType("fake_module")
     sys.modules["fake_module"] = fake_module
-    
+
     # Now import it
     imported_fake = importlib.import_module("fake_module")
     return imported_fake
@@ -144,13 +145,13 @@ def process_data():
     data = [1, 2, 3, 4, 5]
     arr = np.array(data)
     df = pd.DataFrame({"values": data})
-    
+
     result = {
         "sum": arr.sum(),
         "mean": arr.mean(),
         "dataframe_size": len(df)
     }
-    
+
     return result
 
 def calculate_average():
@@ -165,11 +166,11 @@ def main(verbose):
         print("Mock project is running in verbose mode!")
     else:
         print("Mock project is running!")
-    
+
     api_data = fetch_data()
     processed = process_data()
     avg = calculate_average()
-    
+
     if verbose:
         console = rich.console.Console()
         console.print(f"API Data: {api_data}", style="green")
@@ -178,7 +179,7 @@ def main(verbose):
     else:
         print(f"Processed: {processed}")
         print(f"Average: {avg}")
-    
+
     return {"api": api_data, "processed": processed, "average": avg}
 
 if __name__ == "__main__":
