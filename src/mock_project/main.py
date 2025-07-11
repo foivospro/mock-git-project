@@ -34,8 +34,7 @@ else:
     from typing_extensions import Protocol
 import warnings
 warnings.filterwarnings("ignore")
-import importlib
-import pkgutil
+import importlib, pkgutil
 import sklearn
 
 # More dynamic import edge cases
